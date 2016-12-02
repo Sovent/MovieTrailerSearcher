@@ -1,4 +1,5 @@
 ﻿using System.Web.Http;
+using System.Web.Http.Cors;
 using MovieTrailersSearcher.Filters;
 
 namespace MovieTrailersSearcher
@@ -10,6 +11,8 @@ namespace MovieTrailersSearcher
             config.MapHttpAttributeRoutes();
 
             config.Filters.Add(new ExceptionFilter());
+
+            config.EnableCors(new EnableCorsAttribute("*", "*", "*"));
         }
     }
 }

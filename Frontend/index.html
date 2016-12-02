@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="Vitaly Margelov">
+
+    <title>Movie Trailers Searcher</title>
+
+    <link href="dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <link href="assets/css/ie10-viewport-bug-workaround.css" rel="stylesheet">
+
+    <link href="style.css" rel="stylesheet">
+
+    <script src="assets/js/ie-emulation-modes-warning.js"></script>
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+
+  <body>
+
+    <div id="search-screen" class="container">
+      <div class="header clearfix">
+		<div class="input-group input-group-lg col-md-12 col-lg-12">
+			<input id="search-input" type="text" class="form-control" placeholder="Start typing movie title">
+		</div>
+      </div>
+	  
+	  <div id="search-result"></div>
+
+      <footer class="footer">
+        <p>&copy; 2016 Vitaly Margelov</p>
+      </footer>
+
+    </div>
+	<div id="movie-screen" class="container">
+		<div class="jumbotron">
+		  <h2 id="movie-title">Movie Title (Year)</h2>
+		  <p id="movie-description">This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p>
+		  <p><a id="goToSearch" href="#" class="btn btn-default" role="button">Back to search</a></p>
+		</div>
+		<h2>Trailers found:</h2>
+		<div id="trailers" class="row">
+		</div>
+	</div>
+
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <script src="assets/js/ie10-viewport-bug-workaround.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+	<script src="assets/js/communication.js"></script>
+  </body>
+</html>
