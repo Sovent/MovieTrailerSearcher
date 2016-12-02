@@ -50,7 +50,7 @@ namespace TmdbGateway
             {
                 var movie = await Client.GetMovieAsync(movieId);
 
-                var movieInfo = movie.MayBe()
+                var movieInfo = movie.MayBe(m => m.Id == 0)
                     .Select(m => new MovieInfo(
                         m.Id,
                         m.OriginalTitle,
