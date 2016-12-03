@@ -23,7 +23,8 @@ let goToSearch = function() {
 let goToMovie = function(movie) {
 	$("#movie-title").html(`${movie.MovieInfo.Title} (${movie.MovieInfo.Year === null ? "Year unknown" : movie.MovieInfo.Year})`);
 	$("#movie-description").html(movie.MovieInfo.Description);
-	$("#trailers").html(renderVideoPreviews(movie));	
+	$("#trailers").html(renderVideoPreviews(movie));
+	
 	$(".thumbnail").click(function() {
 		$("#youtube-trailer")[0].src = `https://www.youtube.com/embed/${$(this).context.id}`;
 	});
@@ -47,9 +48,9 @@ let createTwitterShareButton = function(link) {
 let renderSearchItem = function(movie) {
 	return `	
 		<div id="${movie.MovieId}" class="searchitem row">
-			<div class="col-md-2 col-sm-1">${movie.MovieId}</div>
-			<div class="col-md-8 col-sm-10">${movie.Title}</div>
-			<div class="col-md-2 col-sm-1">${movie.Year === null ? "Unknown" : movie.Year}</div>
+			<div class="col-md-2 col-sm-1 col-xs-1">${movie.MovieId}</div>
+			<div class="col-md-8 col-sm-10 col-xs-10">${movie.Title}</div>
+			<div class="col-md-2 col-sm-1 col-xs-1">${movie.Year === null ? "Unknown" : movie.Year}</div>
 		</div>
 	`
 }
@@ -57,9 +58,9 @@ let renderSearchList = function(moviesList) {
 	return `
 	<div id="search-result" class="container">
 		<div class="table-head row">
-			<div class="col-md-2 col-sm-1">MovieId</div>
-			<div class="col-md-8 col-sm-10">Title</div>
-			<div class="col-md-2 col-sm-1">Year</div>
+			<div class="col-md-2 col-sm-1 col-xs-1">MovieId</div>
+			<div class="col-md-8 col-sm-10 col-xs-10">Title</div>
+			<div class="col-md-2 col-sm-1 col-xs-1">Year</div>
 		</div>
 		${moviesList.map(renderSearchItem).reduce((first, second) => first + second, "")}
 	</div>
@@ -68,7 +69,7 @@ let renderSearchList = function(moviesList) {
 
 let renderVideoPreview = function(video) {
 	return `
-	<div class="col-lg-6 col-md-6 col-sm-6">
+	<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
 		<div id="${video.Id}" class="thumbnail" data-toggle="modal" data-target=".trailer-modal">
 			<img class="preview-image" src="${video.PreviewImage}">
 			<div class="caption">
