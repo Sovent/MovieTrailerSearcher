@@ -44,8 +44,19 @@ body {
 	padding-top:10px;
 	padding-bottom:10px;
 }
-#search-result .row{
-	height = 40px;
+
+.searchitem {
+	height: 50px;
+	padding: 10px;
+}
+.table-head {
+	height: 50px;
+	padding: 10px;
+}
+
+.searchitem:hover {
+	cursor:pointer;
+	background-color:#6a737c;
 }
 
 /* Responsive: Portrait tablets and up */

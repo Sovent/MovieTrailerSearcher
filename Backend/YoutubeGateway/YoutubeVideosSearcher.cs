@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Google.Apis.Services;
 using Google.Apis.YouTube.v3;
+using Google.Apis.YouTube.v3.Data;
 using Journalist;
 
 namespace YoutubeGateway
@@ -40,7 +41,7 @@ namespace YoutubeGateway
                     .Select(item => new YouTubeVideoPreview(
                         item.Id.VideoId, 
                         item.Snippet.Title, 
-                        new Uri(item.Snippet.Thumbnails.Default__.Url)));
+                        GetThumbnail(item)));
 
                 return previews;
             }
@@ -48,6 +49,15 @@ namespace YoutubeGateway
             {
                 throw new YoutubeAccessException(exception.Message, exception);
             }
+        }
+
+        private Uri GetThumbnail(SearchResult item)
+        {
+            return new Uri(
+                item?.Snippet?.Thumbnails?.Maxres?.Url 
+                ?? item?.Snippet?.Thumbnails?.High?.Url
+                ?? item?.Snippet?.Thumbnails?.Standard?.Url
+                ?? item?.Snippet?.Thumbnails?.Default__?.Url);    
         }
 
         private const string SearchVideosOnlyAcceptablePart = "snippet";
