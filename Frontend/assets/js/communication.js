@@ -27,11 +27,21 @@ let goToMovie = function(movie) {
 	$(".thumbnail").click(function() {
 		$("#youtube-trailer")[0].src = `https://www.youtube.com/embed/${$(this).context.id}`;
 	});
-	$(".modal").on("hidden.bs.modal", function(e) {
+	$(".trailer-modal").on("hidden.bs.modal", function(e) {
+		const encodedTrailerUrl = encodeURIComponent($("#youtube-trailer")[0].src);
+		$("#fb-share-button").attr("src", `https://www.facebook.com/plugins/share_button.php?href=${encodedTrailerUrl}&layout=button&size=large&mobile_iframe=true&width=114&height=28&appId`);
+			
 		$("#youtube-trailer")[0].src = "";
+		$(".share-window").modal("show");
 	})
 	$("#search-screen").hide();
 	$("#movie-screen").show();
+}
+
+let createTwitterShareButton = function(link) {
+	$("<a></a>").addClass("twitter-share-button")
+		.attr("href", `https://twitter.com/intent/tweet?text=Check%20out%20this%20trailer&url=${link}`)
+		.attr("data-size", "large")
 }
 
 let renderSearchItem = function(movie) {
